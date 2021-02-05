@@ -1,0 +1,77 @@
+Course Project
+========================================================
+class: small-code
+Shiny Application and Reproducible Pitch
+
+
+Author A. Christofili
+
+Date   February 5th, 2021
+
+
+Objective
+=========================================================
+class: small-code
+
+This peer assessed assignment has two parts. 1) You will create a Shiny application and deploy it on Rstudio. 2) You will use Slidify or Rstudio Presenter to prepare a reproducible pitch presentation about your application.
+
+
+==
+Your Reproducible Pitch Presentation
+
+You get 5 slides (including the title slide)  to pitch your app. You're going to create a web page using Slidify or Rstudio Presenter with an html5 slide deck.
+
+
+
+
+
+Create a simple BMI calculator
+========================================================
+Body Mass Index (BMI) is a convenient rule of thumb used to broadly categorize a person as Underweight (<18.5), Normal (18.5-25.0), Overweight (25.0-30.0), Obese (>30.0), based on tissue mass (muscle, fat, and bone) and height.
+
+Commonly accepted BMI ranges are 
+
+Using two sliders, you input your mass (kg) and your height (m).
+
+The function used is:
+
+```{r, echo=FALSE}
+latexImg = function(latex){
+
+    link = paste0('http://latex.codecogs.com/gif.latex?',
+           gsub('\\=','%3D',URLencode(latex)))
+
+    link = gsub("(%..)","\\U\\1",link,perl=TRUE)
+    return(paste0('![](',link,')'))
+}
+
+```
+
+`r latexImg('BMI = \\frac{mass}{height^2}')`
+
+The app can be found [here](https://a-ch-petr.shinyapps.io/NewApp/)
+.  The source code can be found [here](https://github.com/AspaChristofili/Shiny-Application-and-Reproducible-Pitch)
+
+The code used
+========================================================
+Converting cm into m (by dividing by 100):
+```{r, eval=FALSE}
+bmi = round(mass/(height/100)^2, 1)
+```
+Plotting the calculated BMI, according to the specific categories from [Wikipedia](https://en.wikipedia.org/wiki/Body_mass_index#Categories).
+
+Note: The area noted in vey light green, is considered Normal.
+```{r, eval=FALSE}
+dat<-matrix(c(15.0, 1.0, 2.5, 6.5, 5.0, 5.0, 5.0), ncol = 1, nrow = 7)
+barplot(dat, horiz = TRUE, yaxt="n", xlab = "My BMI is...", main="BMI Calculator", col=c("#49852e", "#61bd4f", "#99d18f", "#d6ecd2", "#99d18f", "#61bd4f", "#49852e", "#3f6f21")); lines(x=c(21.6, 21.6), y=c(0,1.2), col="#fcdc04", lwd=6)
+```
+
+
+Example of the plot
+========================================================
+This example represents a person's BMI equal to 21.6
+
+```{r, echo=FALSE}
+dat<-matrix(c(15.0, 1.0, 2.5, 6.5, 5.0, 5.0, 5.0), ncol = 1, nrow = 7)
+barplot(dat, horiz = TRUE, yaxt="n", xlab = "My BMI is...", main="BMI Calculator", col=c("#49852e", "#61bd4f", "#99d18f", "#d6ecd2", "#99d18f", "#61bd4f", "#49852e", "#3f6f21")); lines(x=c(21.6, 21.6), y=c(0,1.2), col="#fcdc04", lwd=6)
+```
