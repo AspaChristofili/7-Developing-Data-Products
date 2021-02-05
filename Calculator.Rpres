@@ -49,8 +49,7 @@ latexImg = function(latex){
 
 `r latexImg('BMI = \\frac{mass}{height^2}')`
 
-The app can be found [here](https://a-ch-petr.shinyapps.io/NewApp/)
-.    The files can be found [here](https://github.com/AspaChristofili/Shiny-Application-and-Reproducible-Pitch).
+The app can be found [here](https://a-ch-petr.shinyapps.io/NewApp/) .    The files can be found [here](http://github.com/AspaChristofili/Shiny-Application-and-Reproducible-Pitch)
 
 The code used
 ========================================================
